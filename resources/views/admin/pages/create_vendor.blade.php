@@ -29,7 +29,8 @@
                         <div class="card-header bg-primary">
                             <h4>Add New Vendor</h4>
                         </div>
-                        <form id="vendorForm" action="{{ route('create.vendor') }}" method="post">
+                        <form id="vendorForm" action="{{ route('create.vendor') }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('post')
                             <div class="card-body">
@@ -104,7 +105,8 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="col-12">
-                                                <label for="valid_id_picture">Valid ID picture</label>
+                                                <label for="valid_id_picture">Valid ID
+                                                    picture</label>
                                                 <div class="input-group mb-3">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
@@ -199,3 +201,7 @@
         </div><!-- /.container-fluid -->
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/display_file_name.js') }}"></script>
+@endpush

@@ -89,7 +89,3 @@ function showSuccess(message){
 }
 
 //# sourceMappingURL=custom_funtions.js.map
-
-// hide or show input field
-// form front end validation
-

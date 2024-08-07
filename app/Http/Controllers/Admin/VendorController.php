@@ -54,10 +54,11 @@ class VendorController extends Controller
         $data['user_role'] = $data['user_role'] ?? 'Vendor';
         $data['date'] = $data['date'] ?? date('Y-m-d');
         $data['status'] = $data['status'] ?? 'For approval';
-        $data['profile_picture'] = $data['profile_picture'] ?? '';
-        $data['valid_id_picture'] = $data['valid_id_picture'] ?? '';
+        $data['profile_picture'] = $request->hasFile('profile_picture') ? $request->file('profile_picture')->store('profile_pictures', 'public') : null;
+        $data['valid_id_picture'] = $request->hasFile('valid_id_picture') ? $request->file('valid_id_picture')->store('valid_id_picture', 'public') : null;
         $data['approved_by'] = $data['approved_by'] ?? '';
 
+        //dd($data);
 
         try {
             VendorModel::create($data);

@@ -105,6 +105,7 @@
     <script src="{{ asset('js/toastr.min.js') }}" defer></script> <!-- optimized file, please refer the readable css on template file -->
     <script src="{{ asset('js/form_validation.js') }}" defer></script>
     @yield('scripts')
+    @stack('scripts')
 </body>
 
 </html>
