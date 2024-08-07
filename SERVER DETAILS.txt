@@ -1,0 +1,18 @@
+
+php artisan serve --port=8080
+npm run dev
+
+admin@emarkado.com
+adminadmin
+
+php artisan make:controller Admin\\ProfileController
+php artisan make:middleware AdminAuth
+php artisan make:migration change_tablename //create migration file
+php artisan migrate //execute migration
+
+
+
+Admin LTE for Admin Panel in LARAVEL with admin login features
+https://www.youtube.com/watch?v=e9rm1id2Q_M
+https://youtu.be/e9rm1id2Q_M?t=2229
+https://youtu.be/e9rm1id2Q_M?t=3338

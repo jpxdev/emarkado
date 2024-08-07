@@ -1,0 +1,16 @@
+Name
+Business Name
+Address
+Contact Number
+Email
+Profile (upload)
+Valid Id Picture
+Username
+Password
+
+advance
+hidden 
+User Role=vendor
+date = currentDate (month day year)
+created ad = currentTime (month day year (time)) == 2 hours ago functions
+update = 
