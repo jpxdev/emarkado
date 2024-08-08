@@ -1,0 +1,8 @@
+git global user.name "enter your name"  //setting up you username
+git clone **copy the link of github rep**   //cloning github project
+
+Uploading your project to github repo
+git init //setting up your files ready for upload/deployment
+git remote origin git@github.com:jpxdev/your-project-name //linking the github to your repo link
+git add . //adding your project to repo
+git commit -m "Insert your comment here"  //uploading your project
