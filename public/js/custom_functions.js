@@ -3,6 +3,7 @@
  * Copyright 2014-2021 Colorlib <https://colorlib.com>
  * Licensed under MIT (https://github.com/ColorlibHQ/AdminLTE/blob/master/LICENSE)
  */
+//Comment
 $(document).ready(function() {
     // SETS THE COLOR OF USER DEPENDING ON ITS ROLE (OLD FUNCTION)
     /* function updateBadgeRole(status) {
