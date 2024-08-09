@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{AuthController, ProfileController, UserController, VendorController};
+use App\Http\Controllers\Vendor\{VendorAuthController};
 use App\Http\Middleware\AdminAuth;
 
 Route::get('/', function () {
@@ -12,6 +13,11 @@ Route::get('/', function () {
 Route::get('/admin/login', [AuthController::class, 'getLogin'])->name('getLogin');
 Route::post('/admin/login', [AuthController::class, 'postLogin'])->name('postLogin');
 Route::post('/admin/logout', [AuthController::class, 'adminLogout'])->name('adminLogout');
+
+//VENDOR FUNCTIONS
+Route::get('/vendor/login', [VendorAuthController::class, 'getVendorLogin'])->name('getVendorLogin');
+Route::post('/vendor/login', [VendorAuthController::class, 'postVendorLogin'])->name('postVendorLogin');
+Route::get('/vendor/dashboard', [VendorAuthController::class, 'dashboard'])->name('vendor-dashboard');
 
 //Route::group(['middleware'=>['admin_auth']],function(){});
 

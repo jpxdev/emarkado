@@ -5,6 +5,7 @@ namespace App\Models\Admin_Data;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class AdminModel extends Model
 {
     use HasFactory;

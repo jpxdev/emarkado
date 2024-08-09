@@ -39,7 +39,9 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'admin',
+            'provider' => 'vendors',
         ],
+
     ],
 
     /*
@@ -69,6 +71,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'admin',
         // ],
+
+        'vendors' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Vendor_Data\VendoAuthModel::class),
+        ],
     ],
 
     /*
@@ -96,6 +103,11 @@ return [
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'vendors' => [
+            'provider' => 'vendors',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 
