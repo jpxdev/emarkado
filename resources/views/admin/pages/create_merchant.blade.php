@@ -42,7 +42,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form method="post" action="{{ route('create.merchant') }}" enctype="multipart/form-data">
+                <form id="merchant_form"method="post" action="{{ route('create.merchant') }}" enctype="multipart/form-data">
                     @csrf
                     @method('post')
                     <div class="card-body">
@@ -50,7 +50,8 @@
                             <label for="name">Name</label>
                             <input type="text" name="name"
                                 class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" id="name"
-                                placeholder="Enter name" value="{{ old('name') }}">
+                                placeholder="Enter name" value="{{ old('name') }}" name="name">
+                            <div class="error-container text-danger" style="font-size: 12px;"></div>
                             <p class="text-danger">
                                 @error('name')
                                     {{ $message }}
@@ -61,7 +62,8 @@
                             <label for="address">Address</label>
                             <input type="text" name="address"
                                 class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" id="address"
-                                placeholder="Enter address" value="{{ old('address') }}">
+                                placeholder="Enter address" value="{{ old('address') }}" name="address">
+                            <div class="error-container text-danger" style="font-size: 12px;"></div>
                             <p class="text-danger">
                                 @error('address')
                                     {{ $message }}
@@ -72,7 +74,8 @@
                             <label for="contact_number">Contact Number</label>
                             <input type="text" name="contact_number"
                                 class="form-control {{ $errors->has('contact_number') ? 'is-invalid' : '' }}"
-                                id="contact_number" placeholder="Enter contact" value="{{ old('contact_number') }}">
+                                id="contact_number" placeholder="Enter contact" value="{{ old('contact_number') }}" name="contact_number">
+                            <div class="error-container text-danger" style="font-size: 12px;"></div>
                             <p class="text-danger">
                                 @error('contact_number')
                                     {{ $message }}
@@ -83,7 +86,8 @@
                             <label for="email">E-mail Address</label>
                             <input type="email" name="email"
                                 class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email"
-                                placeholder="Enter email" value="{{ old('email') }}">
+                                placeholder="Enter email" value="{{ old('email') }}" nam="email">
+                            <div class="error-container text-danger" style="font-size: 12px;"></div>
                             <p class="text-danger">
                                 @error('email')
                                     {{ $message }}
@@ -94,7 +98,8 @@
                             <label for="username">Username</label>
                             <input type="text" name="username"
                                 class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" id="username"
-                                placeholder="Enter Username" value="{{ old('username') }}">
+                                placeholder="Enter Username" value="{{ old('username') }}" name="username">
+                            <div class="error-container text-danger" style="font-size: 12px;"></div>
                             <p class="text-danger">
                                 @error('username')
                                     {{ $message }}
@@ -105,7 +110,8 @@
                             <label for="password">Password</label>
                             <input type="password" name="password"
                                 class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
-                                placeholder="Password">
+                                placeholder="Password" name="password">
+                            <div class="error-container text-danger" style="font-size: 12px;"></div>
                             <p class="text-danger">
                                 @error('password')
                                     {{ $message }}
@@ -116,7 +122,8 @@
                             <label for="password">Confirm Password</label>
                             <input type="password" name="password_confirmation"
                                 class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="password"
-                                placeholder="Password">
+                                placeholder="Password" name="password_confirmation">
+                            <div class="error-container text-danger" style="font-size: 12px;"></div>
                             <p class="text-danger">
                                 @error('password')
                                     {{ $message }}
