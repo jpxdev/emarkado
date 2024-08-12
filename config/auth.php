@@ -17,6 +17,11 @@ return [
         'guard' => env('AUTH_GUARD', 'web'),
         'passwords' => env('AUTH_PASSWORD_BROKER', 'admin'),
     ],
+    'vendor' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Vendor::class,
+    ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -39,6 +44,10 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'admin',
+        ],
+        'vendor'=> [
+            'driver' => 'sesion',
+            'provider' => 'vendors',
         ],
     ],
 
@@ -65,10 +74,10 @@ return [
             'model' => env('AUTH_MODEL', App\Models\Admin::class),
         ],
 
-        // 'admin' => [
-        //     'driver' => 'database',
-        //     'table' => 'admin',
-        // ],
+        'vendors' => [
+            'driver' => 'eloquent',
+            'table' => env('AUTH_MODEL', App\Models\Vendor::class),
+        ],
     ],
 
     /*
@@ -96,6 +105,11 @@ return [
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
+        ],
+
+        'vendors'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Vendor::class,
         ],
     ],
 
