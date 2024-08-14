@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'admin',
         ],
+        // 'vendor' => [
+        // 'driver' => 'session',
+        // 'provider' => 'vendors',
+        // ],
+        'merchant' => [
+            'driver' => 'session',
+            'provider' => 'merchants',
+        ],
+        // 'buyer' => [
+        //     'driver' => 'session',
+        //     'provider' => 'buyers',
+        // ],
     ],
 
     /*
@@ -65,6 +77,18 @@ return [
             'model' => env('AUTH_MODEL', App\Models\Admin::class),
         ],
 
+        // 'vendors' => [
+        // 'driver' => 'eloquent',
+        // 'model' => App\Models\Vendor::class,
+        // ],
+        'merchants' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Merchant::class),
+        ],
+        // 'buyers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Buyer::class,
+        // ],
         // 'admin' => [
         //     'driver' => 'database',
         //     'table' => 'admin',
@@ -93,6 +117,12 @@ return [
     'passwords' => [
         'admin' => [
             'provider' => 'admin',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'merchant' => [
+            'provider' => 'merchants',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
