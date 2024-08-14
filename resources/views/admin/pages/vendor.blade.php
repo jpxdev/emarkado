@@ -74,13 +74,16 @@
                                     <tbody>
                                         @foreach ($vendors as $vendor)
                                             <tr>
-                                                <td>{{ $vendor->user_id }}</td>
-                                                <td>{{ $vendor->name }}</td>
-                                                <td>{{ $vendor->email }}</td>
-                                                <td><span id="status-badgeRole"
+                                                <td  class="align-middle">{{ $vendor->user_id }}</td>
+                                                <td class="align-middle">
+                                                    <img src="{{ $vendor->profile_picture ? URL::to('/storage') . '/' . $vendor->profile_picture : asset('images/icons8-user.png') }}" alt="Profile" class="table-avatar" onerror="this.onerror=null;this.src='{{ asset('images/icons8-user.png') }}">
+                                                    {{ $vendor->name }}
+                                                </td>
+                                                <td class="align-middle">{{ $vendor->email }}</td>
+                                                <td class="align-middle"><span id="status-badgeRole"
                                                         class="badge badge-pill fontcolor-white {{ Functions::userrole_color($vendor->user_role) }}">{{ $vendor->user_role }}</span>
                                                 </td>
-                                                <td><span id="status-badgeStatus"
+                                                <td class="align-middle"><span id="status-badgeStatus"
                                                         class="badge badge-pill {{ Functions::status_color($vendor->status) }}">{{ $vendor->status }}</span>
                                                 </td>
                                                 <td class="align-middle"><a href="#" class="btn btn-tool"><i

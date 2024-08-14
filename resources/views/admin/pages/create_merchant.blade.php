@@ -130,24 +130,24 @@
                                 @enderror
                             </p>
                         </div>
-                        <!-- <div class="form-group">
-                                                        <label for="profile_picture">Profile Picture</label>
-                                                        <div class="input-group">
-                                                          <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="profile_picture">
-                                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="form-group">
-                                                        <label for="valid_id_picture">Valid ID</label>
-                                                        <div class="input-group">
-                                                          <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="valid_id_picture">
-                                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                                          </div>
-                                                        </div>
-                                                      </div> -->
+                        <div class="form-group">
+                            <label for="merchant_profile_picture">Profile Picture</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="merchant_profile_picture" name="merchant_profile_picture">
+                                    <label class="custom-file-label" for="merchant_profile_picture" id="merchant_profile_picture" aria-describedby="merchant_profile_picture">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="merchant_valid_id_picture">Valid ID</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="merchant_valid_id_picture" name="merchant_valid_id_picture">
+                                    <label class="custom-file-label" for="merchant_valid_id_picture" id="merchant_valid_id_picture" aria-describedby="merchant_valid_id_picture">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
 
@@ -161,3 +161,7 @@
     </div>
     <!-- /.content -->
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/display_file_name.js') }}"></script>
+@endpush

@@ -22,6 +22,7 @@
 
     <!-- Main content -->
     <div class="content">
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
@@ -89,33 +90,33 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="col-12">
-                                                <label for="profile_picture">Profile picture</label>
+                                                <label for="vendor_profile_picture">Profile picture</label>
                                                 <div class="input-group mb-3">
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="profile_picture"
-                                                            name="profile_picture">
-                                                        <label class="custom-file-label" for="profile_picture"
-                                                            aria-describedby="profile_picture">Choose</label>
+                                                        <input type="file" class="custom-file-input" id="vendor_profile_picture"
+                                                            name="vendor_profile_picture">
+                                                        <label class="custom-file-label" for="vendor_profile_picture"
+                                                            aria-describedby="vendor_profile_picture">Choose</label>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text" id="profile_picture">Upload</span>
+                                                        <span class="input-group-text" id="vendor_profile_picture">Upload</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col-12">
-                                                <label for="valid_id_picture">Valid ID
+                                                <label for="vendor_valid_id_picture">Valid ID
                                                     picture</label>
                                                 <div class="input-group mb-3">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
-                                                            id="valid_id_picture" name="valid_id_picture">
-                                                        <label class="custom-file-label" for="valid_id_picture"
-                                                            aria-describedby="valid_id_picture">Choose</label>
+                                                            id="vendor_valid_id_picture" name="vendor_valid_id_picture">
+                                                        <label class="custom-file-label" for="vendor_valid_id_picture"
+                                                            aria-describedby="vendor_valid_id_picture">Choose</label>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text" id="valid_id_picture">Upload</span>
+                                                        <span class="input-group-text" id="vendor_valid_id_picture">Upload</span>
                                                     </div>
                                                 </div>
                                             </div>

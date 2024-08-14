@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin_Data\VendorModel;
 use Illuminate\Http\Request;
 use App\Helpers\Functions;
+use App\Helpers\ImageResizer;
 
 class VendorController extends Controller
 {
 
     public function add_vendor(Request $request)
     {
+        \Log::info($request->all());
         $validatedData = $request->validate([
             'user_id' => 'nullable',
             'name' => 'required|string|max:255',
@@ -19,8 +21,8 @@ class VendorController extends Controller
             'address' => 'required|string|max:255',
             'contact_number' => 'required|string|max:11',
             'email' => 'required|email|max:255',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:512',
-            'valid_id_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:512',
+            'vendor_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:512',
+            'cendor_valid_id_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:512',
             'username' => 'required|string|max:255|unique:vendors',
             'password' => [
                 'required',
@@ -48,15 +50,29 @@ class VendorController extends Controller
         // $formattedId = 'VNDR-' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
 
 
-
         $data = $validatedData;
         $data['user_id'] = Functions::IDGenerator(new VendorModel, 'user_id', 5, 'VNDR');
         $data['user_role'] = $data['user_role'] ?? 'Vendor';
         $data['date'] = $data['date'] ?? date('Y-m-d');
         $data['status'] = $data['status'] ?? 'For approval';
-        $data['profile_picture'] = $request->hasFile('profile_picture') ? $request->file('profile_picture')->store('profile_pictures', 'public') : null;
-        $data['valid_id_picture'] = $request->hasFile('valid_id_picture') ? $request->file('valid_id_picture')->store('valid_id_picture', 'public') : null;
+        //$data['profile_picture'] = $data['profile_picture'] ?? '';
+        //$data['valid_id_picture'] = $data['valid_id_picture'] ?? '';
+        $data['profile_picture'] = $request->hasFile('vendor_profile_picture') ? $request->file('vendor_profile_picture')->store('vendor_profile_picture', 'public') : null;
+        $data['valid_id_picture'] = $request->hasFile('vendor_valid_id_picture') ? $request->file('vendor_valid_id_picture')->store('vendor_valid_id_picture', 'public') : null;
         $data['approved_by'] = $data['approved_by'] ?? '';
+
+
+        // if ($request->hasFile('vendor_profile_picture')) {
+        //     $data['profile_picture'] = ImageResizer::resizeAndSaveImage($request->file('vendor_profile_picture'), 'vendor_profile_picture');
+        // }
+
+        // // Handle and resize valid ID picture
+        // if ($request->hasFile('vendor_valid_id_picture')) {
+        //     $data['valid_id_picture'] = ImageResizer::resizeAndSaveImage($request->file('vendor_valid_id_picture'), 'vendor_valid_id_picture');
+        // }
+
+        //encryp password before storing to database
+        $data['password'] = bcrypt($data['password']);
 
         //dd($data);
 
