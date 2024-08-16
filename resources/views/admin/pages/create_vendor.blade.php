@@ -191,7 +191,7 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary px-5">Add</button>
+                                <button type="submit" class="btn btn-primary px-5">Submit</button>
                             </div>
                         </form>
 

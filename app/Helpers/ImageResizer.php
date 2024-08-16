@@ -11,10 +11,10 @@ class ImageResizer
 
         // To fix
 
-        // $image = Image::make($file)->resize(300, 300);
-        // $filename = time() . '.' . $file->getClientOriginalExtension();
-        // $path = public_path('storage/' . $folder . '/' . $filename);
-        // $image->save($path);
-        // return $folder . '/' . $filename;
+        $image = Image::make($file)->resize(300, 300);
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $path = public_path('storage/' . $folder . '/' . $filename);
+        $image->save($path);
+        return $folder . '/' . $filename;
     }
 }

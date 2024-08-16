@@ -57,19 +57,19 @@ class VendorController extends Controller
         $data['status'] = $data['status'] ?? 'For approval';
         //$data['profile_picture'] = $data['profile_picture'] ?? '';
         //$data['valid_id_picture'] = $data['valid_id_picture'] ?? '';
-        $data['profile_picture'] = $request->hasFile('vendor_profile_picture') ? $request->file('vendor_profile_picture')->store('vendor_profile_picture', 'public') : null;
-        $data['valid_id_picture'] = $request->hasFile('vendor_valid_id_picture') ? $request->file('vendor_valid_id_picture')->store('vendor_valid_id_picture', 'public') : null;
+        // $data['profile_picture'] = $request->hasFile('vendor_profile_picture') ? $request->file('vendor_profile_picture')->store('vendor_profile_picture', 'public') : null;
+        // $data['valid_id_picture'] = $request->hasFile('vendor_valid_id_picture') ? $request->file('vendor_valid_id_picture')->store('vendor_valid_id_picture', 'public') : null;
         $data['approved_by'] = $data['approved_by'] ?? '';
 
 
-        // if ($request->hasFile('vendor_profile_picture')) {
-        //     $data['profile_picture'] = ImageResizer::resizeAndSaveImage($request->file('vendor_profile_picture'), 'vendor_profile_picture');
-        // }
+        if ($request->hasFile('vendor_profile_picture')) {
+            $data['profile_picture'] = ImageResizer::resizeAndSaveImage($request->file('vendor_profile_picture'), 'vendor_profile_picture');
+        }
 
-        // // Handle and resize valid ID picture
-        // if ($request->hasFile('vendor_valid_id_picture')) {
-        //     $data['valid_id_picture'] = ImageResizer::resizeAndSaveImage($request->file('vendor_valid_id_picture'), 'vendor_valid_id_picture');
-        // }
+        // Handle and resize valid ID picture
+        if ($request->hasFile('vendor_valid_id_picture')) {
+            $data['valid_id_picture'] = ImageResizer::resizeAndSaveImage($request->file('vendor_valid_id_picture'), 'vendor_valid_id_picture');
+        }
 
         //encryp password before storing to database
         $data['password'] = bcrypt($data['password']);

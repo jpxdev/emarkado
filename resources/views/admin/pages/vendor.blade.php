@@ -68,6 +68,7 @@
                                             <th>Email</th>
                                             <th>User Role</th>
                                             <th>Status</th>
+                                            <th>Created at</th>
                                             <th>Update Record</th>
                                         </tr>
                                     </thead>
@@ -86,6 +87,7 @@
                                                 <td class="align-middle"><span id="status-badgeStatus"
                                                         class="badge badge-pill {{ Functions::status_color($vendor->status) }}">{{ $vendor->status }}</span>
                                                 </td>
+                                                <td class="align-middle">{{ Functions::GetDateInterval($vendor->created_at)  === "More than a week ago" ? $vendor->created_at :  Functions::GetDateInterval($vendor->created_at)}}</td>
                                                 <td class="align-middle"><a href="#" class="btn btn-tool"><i
                                                             class="fas fa-pen"></i></a><a href="#"
                                                         class="btn btn-tool"><i

@@ -1,4 +1,7 @@
-<?php use App\Helpers\Functions; ?>
+<?php
+use App\Helpers\Functions;
+use App\Helpers\CreatedAt;
+?>
 
 <!-- GET URL VARIABLES STATUS AND USER_ID -->
   @if (request()->query('status') === 'success' && request()->query('user_id'))
@@ -61,6 +64,7 @@
                       <th>Email</th>
                       <th>User Role</th>
                       <th>Status</th>
+                      <th>Created at</th>
                       <th>Update Record</th>
                     </tr>
                     </thead>
@@ -75,6 +79,7 @@
                         <td class="align-middle">{{$column->email}}</td>
                         <td class="align-middle"><span id="status-badgeRole" class="badge badge-pill fontcolor-white {{ Functions::userrole_color($column->user_role) }}">{{$column->user_role}}</span></td>
                         <td class="align-middle"><span id="status-badgeStatus" class="badge badge-pill {{ Functions::status_color($column->status) }}">{{$column->status}}</span></td>
+                        <td class="align-middle">{{ Functions::GetDateInterval($column->created_at)  === "More than a week ago" ? $column->created_at :  Functions::GetDateInterval($column->created_at)}}</td>
                         <td class="align-middle"><a href="#" class="btn btn-tool"><i class="fas fa-pen"></i></a><a href="#" class="btn btn-tool"><i class="fas fa-check color-success"></i></a><a href="#" class="btn btn-tool"><i class="fas fa-trash color-danger"></i></a></td>
                     </tr>
                     @endforeach
