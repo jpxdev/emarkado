@@ -17,11 +17,6 @@ return [
         'guard' => env('AUTH_GUARD', 'web'),
         'passwords' => env('AUTH_PASSWORD_BROKER', 'admin'),
     ],
-    'vendor' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Vendor::class,
-    ],
-
 
     /*
     |--------------------------------------------------------------------------
@@ -43,12 +38,20 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'users',
         ],
-        'vendor'=> [
-            'driver' => 'sesion',
-            'provider' => 'vendors',
+        // 'vendor' => [
+        // 'driver' => 'session',
+        // 'provider' => 'vendors',
+        // ],
+        'merchant' => [
+            'driver' => 'session',
+            'provider' => 'merchants',
         ],
+        // 'buyer' => [
+        //     'driver' => 'session',
+        //     'provider' => 'buyers',
+        // ],
     ],
 
     /*
@@ -74,10 +77,22 @@ return [
             'model' => env('AUTH_MODEL', App\Models\Admin::class),
         ],
 
-        'vendors' => [
+        // 'vendors' => [
+        // 'driver' => 'eloquent',
+        // 'model' => App\Models\Vendor::class,
+        // ],
+        'merchants' => [
             'driver' => 'eloquent',
-            'table' => env('AUTH_MODEL', App\Models\Vendor::class),
+            'model' => env('AUTH_MODEL', App\Models\Merchant::class),
         ],
+        // 'buyers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Buyer::class,
+        // ],
+        // 'admin' => [
+        //     'driver' => 'database',
+        //     'table' => 'admin',
+        // ],
     ],
 
     /*
@@ -106,10 +121,11 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-
-        'vendors'=>[
-            'driver'=>'eloquent',
-            'model'=>App\Models\Vendor::class,
+        'merchant' => [
+            'provider' => 'merchants',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
         ],
     ],
 

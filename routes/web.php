@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{AuthController, ProfileController, UserController, VendorController};
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Middleware\AdminAuth;
+use App\Http\Middleware\CheckApprovedStatus;
 
 Route::get('/', function () {
-    return view('admin.auth.login');
+    return view('auth.login');
 });
 
 //ADMIN FUNCTIONS
@@ -26,6 +28,19 @@ Route::middleware([AdminAuth::class])->group(function () {
     Route::get('/admin/buyer', [UserController::class, 'buyer'])->name('pages.buyer');
 });
 
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+// FOR TESTING 
+
+Route::middleware(['auth:merchant', CheckApprovedStatus::class])->group(function () {
+    Route::get('/merchant-dashboard', [MerchantController::class, 'dashboard']);
+});
+
+Route::get('/user-login', [LoginController::class, 'getLogin'])->name('getLogin');
+Route::post('/user-login', [LoginController::class, 'postLogin'])->name('postLogin');
+
+
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 
@@ -42,3 +57,5 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });
+
+
