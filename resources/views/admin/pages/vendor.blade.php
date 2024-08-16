@@ -64,7 +64,7 @@
                                     <thead>
                                         <tr>
                                             <th>User ID</th>
-                                            <th>Name</th>
+                                            <th>Authorized Representative</th>
                                             <th>Email</th>
                                             <th>User Role</th>
                                             <th>Status</th>
@@ -78,7 +78,7 @@
                                                 <td  class="align-middle">{{ $vendor->user_id }}</td>
                                                 <td class="align-middle">
                                                     <img src="{{ $vendor->profile_picture ? URL::to('/storage') . '/' . $vendor->profile_picture : asset('images/icons8-user.png') }}" alt="Profile" class="table-avatar" onerror="this.onerror=null;this.src='{{ asset('images/icons8-user.png') }}">
-                                                    {{ $vendor->name }}
+                                                    {{ $vendor->coop_representative_personel }}
                                                 </td>
                                                 <td class="align-middle">{{ $vendor->email }}</td>
                                                 <td class="align-middle"><span id="status-badgeRole"

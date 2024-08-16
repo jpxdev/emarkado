@@ -40,18 +40,18 @@
                                         <div class="form-row">
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="name">Vendor name</label>
-                                                    <input type="text" class="form-control" id="name"
-                                                        aria-describedby="name" name="name">
+                                                    <label for="authorized_representative">Authorized Representative</label>
+                                                    <input type="text" class="form-control" id="authorized_representative"
+                                                        aria-describedby="authorized_representative" name="authorized_representative">
                                                     <div class="error-container text-danger mt-1" style="font-size: 12px;">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="business_name">Business name</label>
-                                                    <input type="text" class="form-control" id="business_name"
-                                                        aria-describedby="business_name" name="business_name">
+                                                    <label for="coop_name">Coop name</label>
+                                                    <input type="text" class="form-control" id="coop_name"
+                                                        aria-describedby="coop_name" name="coop_name">
                                                     <div class="error-container text-danger mt-1" style="font-size: 12px;">
                                                     </div>
                                                 </div>

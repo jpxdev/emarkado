@@ -12,8 +12,8 @@ class VendorModel extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'name',
-        'business_name',
+        'authorized_representative',
+        'coop_name',
         'address',
         'contact_number',
         'email',

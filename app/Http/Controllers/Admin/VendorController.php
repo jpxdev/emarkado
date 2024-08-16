@@ -16,8 +16,8 @@ class VendorController extends Controller
         \Log::info($request->all());
         $validatedData = $request->validate([
             'user_id' => 'nullable',
-            'name' => 'required|string|max:255',
-            'business_name' => 'required|string|max:255',
+            'authorized_representative' => 'required|string|max:255',
+            'coop_name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'contact_number' => 'required|string|max:11',
             'email' => 'required|email|max:255',

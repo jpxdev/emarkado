@@ -24,11 +24,11 @@ $(document).ready(function(){
     // client-side validation for vendor
     $('#vendorForm').validate({
         rules: {
-            'name' : {
+            'authorized_representative' : {
                 required: true,
                 minlength: 3
             },
-            'business_name': {
+            'coop_name': {
                 required: true,
                 minlength:2
             },
