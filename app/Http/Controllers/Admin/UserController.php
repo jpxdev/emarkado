@@ -4,20 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Admin_Data\{AdminModel, CoopModel, MerchantModel};
+use App\Models\Admin_Data\{AdminModel, VendorModel, MerchantModel};
 use App\Helpers\Functions;
 
 class UserController extends Controller
 {
 
-    public function coop()
+    public function vendor()
     {
-        $coop = CoopModel::all();
+        $vendors = VendorModel::all();
         $data = [
-            'title' => 'Coop',
-            'coop' => $coop
+            'title' => 'Vendor',
+            'vendors' => $vendors
         ];
-        return view('admin.pages.coop', $data); //url path in folder resources/views/admin/pages/coop.blade.php
+        return view('admin.pages.vendor', $data); //url path in folder resources/views/admin/pages/vendor.blade.php
     }
 
     public function merchant()
@@ -50,16 +50,21 @@ class UserController extends Controller
             'email' => 'required|email|unique:merchants',
             'username' => 'required',
             'password' => 'required|confirmed|min:8',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:512',
+            'valid_id_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:512',
             //'password' => 'required|min:8',
             'address' => 'required',
             'profile_picture' => 'nullable',
             'valid_id_picture' => 'nullable'
         ]);
 
+
         $data['user_id'] = $student_id;
         $data['address'] = $data['address'] ?? '';
-        $data['merchant_profile_pictures'] = $data['merchant_profile_pictures'] ?? '';
-        $data['merchant_valid_id_pictures'] = $data['merchant_valid_id_pictures'] ?? '';
+        // $data['profile_picture'] = $data['profile_picture'] ?? '';
+        // $data['valid_id_picture'] = $data['valid_id_picture'] ?? '';
+        $data['profile_picture'] = $request->hasFile('merchant_profile_picture') ? $request->file('merchant_profile_picture')->store('merchant_profile_pictures', 'public') : ' ';
+        $data['valid_id_picture'] = $request->hasFile('merchant_valid_id_picture') ? $request->file('merchant_valid_id_picture')->store('merchant_valid_id_picture', 'public') : ' ';
         $data['user_role'] = $data['user_role'] ?? 'Merchant';
         $data['status'] = $data['status'] ?? 'For approval';
         $data['date'] = $data['date'] ?? date('Y-m-d');
@@ -67,13 +72,14 @@ class UserController extends Controller
         // Encrypt the password before storing it
         $data['password'] = bcrypt($data['password']);
 
-        //$newProduct = MerchantModel::create($data);
+       // dd($data);
 
-        dd($data);
+        //$newProduct = MerchantModel::create($data);
         MerchantModel::create($data);
         $success = ['status' => 'success', 'user_id' => $student_id];
         return redirect()->route('pages.merchant', $success); //url path in folder resources/views/admin/pages/create_merchant.blade.php
     }
+
 
     public function buyer()
     {
@@ -83,11 +89,11 @@ class UserController extends Controller
         return view('admin.pages.buyer', $data); //url path in folder resources/views/admin/pages/buyer.blade.php
     }
 
-    public function create_coop()
+    public function create_vendor()
     {
         $data = [
             'title' => 'Registration'
         ];
-        return view('admin.pages.create_coop', $data);
+        return view('admin.pages.create_vendor', $data);
     }
 }
