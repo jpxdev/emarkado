@@ -21,14 +21,16 @@ $(document).ready(function(){
       return this.optional(element) || regex.test(value);
     }, 'Invalid password pattern.');
 
-    // client-side validation for vendor
-    $('#vendorForm').validate({
+
+    // client-side validation for coop
+    $('#coopForm').validate({
+
         rules: {
-            'name' : {
+            'authorized_representative' : {
                 required: true,
                 minlength: 3
             },
-            'business_name': {
+            'coop_name': {
                 required: true,
                 minlength:2
             },

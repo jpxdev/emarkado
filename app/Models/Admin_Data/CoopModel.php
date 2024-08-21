@@ -5,10 +5,10 @@ namespace App\Models\Admin_Data;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VendorModel extends Model
+class CoopModel extends Model
 {
     use HasFactory;
-    protected $table = 'vendors';
+    protected $table = 'coop';
     protected $fillable = [
         'id',
         'user_id',

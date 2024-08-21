@@ -1,0 +1,5 @@
+
+img.table-avatar,
+.table-avatar img {
+    border-radius: 50%; display: inline; width: 2.5rem;
+}

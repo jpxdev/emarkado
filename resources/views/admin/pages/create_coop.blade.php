@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ __('VENDOR') }}</h1>
+                    <h1>{{ __('Coop') }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('pages.vendor') }}">Vendor</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('pages.coop') }}">Coop</a></li>
                         <li class="breadcrumb-item active">Registration</li>
                     </ol>
                 </div>
@@ -22,14 +22,15 @@
 
     <!-- Main content -->
     <div class="content">
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header bg-primary">
-                            <h4>Add New Vendor</h4>
+                            <h4>Add New Coop</h4>
                         </div>
-                        <form id="vendorForm" action="{{ route('create.vendor') }}" method="post"
+                        <form id="coopForm" action="{{ route('create.coop') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
                             @method('post')
@@ -39,18 +40,18 @@
                                         <div class="form-row">
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="name">Vendor name</label>
-                                                    <input type="text" class="form-control" id="name"
-                                                        aria-describedby="name" name="name">
+                                                    <label for="authorized_representative">Authorized Representative</label>
+                                                    <input type="text" class="form-control" id="authorized_representative"
+                                                        aria-describedby="authorized_representative" name="authorized_representative">
                                                     <div class="error-container text-danger mt-1" style="font-size: 12px;">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="business_name">Business name</label>
-                                                    <input type="text" class="form-control" id="business_name"
-                                                        aria-describedby="business_name" name="business_name">
+                                                    <label for="coop_name">Coop name</label>
+                                                    <input type="text" class="form-control" id="coop_name"
+                                                        aria-describedby="coop_name" name="coop_name">
                                                     <div class="error-container text-danger mt-1" style="font-size: 12px;">
                                                     </div>
                                                 </div>
@@ -89,33 +90,33 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="col-12">
-                                                <label for="profile_picture">Profile picture</label>
+                                                <label for="coop_profile_picture">Profile picture</label>
                                                 <div class="input-group mb-3">
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="profile_picture"
-                                                            name="profile_picture">
-                                                        <label class="custom-file-label" for="profile_picture"
-                                                            aria-describedby="profile_picture">Choose</label>
+                                                        <input type="file" class="custom-file-input" id="coop_profile_picture"
+                                                            name="coop_profile_picture">
+                                                        <label class="custom-file-label" for="coop_profile_picture"
+                                                            aria-describedby="coop_profile_picture">Choose</label>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text" id="profile_picture">Upload</span>
+                                                        <span class="input-group-text" id="coop_profile_picture">Upload</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col-12">
-                                                <label for="valid_id_picture">Valid ID
+                                                <label for="coop_valid_id_picture">Valid ID
                                                     picture</label>
                                                 <div class="input-group mb-3">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input"
-                                                            id="valid_id_picture" name="valid_id_picture">
-                                                        <label class="custom-file-label" for="valid_id_picture"
-                                                            aria-describedby="valid_id_picture">Choose</label>
+                                                            id="coop_valid_id_picture" name="coop_valid_id_picture">
+                                                        <label class="custom-file-label" for="coop_valid_id_picture"
+                                                            aria-describedby="coop_valid_id_picture">Choose</label>
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text" id="valid_id_picture">Upload</span>
+                                                        <span class="input-group-text" id="coop_valid_id_picture">Upload</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,7 +191,7 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary px-5">Add</button>
+                                <button type="submit" class="btn btn-primary px-5">Submit</button>
                             </div>
                         </form>
 

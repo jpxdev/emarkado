@@ -38,7 +38,23 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'users',
+        ],
+        'admin' => [
+        'driver' => 'session',
+        'provider' => 'admin',
+        ],
+        'coop' => [
+        'driver' => 'session',
+        'provider' => 'coop',
+        ],
+        'merchant' => [
+            'driver' => 'session',
+            'provider' => 'merchants',
+        ],
+        'buyer' => [
+            'driver' => 'session',
+            'provider' => 'buyers',
         ],
     ],
 
@@ -61,10 +77,22 @@ return [
 
     'providers' => [
         'admin' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\Admin::class),
+        'driver' => 'eloquent',
+        'model' => env('AUTH_MODEL', App\Models\Admin::class),
         ],
 
+        'coop' => [
+        'driver' => 'eloquent',
+        'model' => env('AUTH_MODEL', App\Models\Coop::class),
+        ],
+        'merchants' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Merchant::class),
+        ],
+        'buyers' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Buyer::class),
+        ],
         // 'admin' => [
         //     'driver' => 'database',
         //     'table' => 'admin',
@@ -93,6 +121,24 @@ return [
     'passwords' => [
         'admin' => [
             'provider' => 'admin',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'merchant' => [
+            'provider' => 'merchants',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'buyer' => [
+            'provider' => 'buyers',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'coop' => [
+            'provider' => 'coop',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,

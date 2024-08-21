@@ -16,8 +16,10 @@ function displayFileName(inputId) {
 
 function initializeFileUploads() {
     const fileInputs = [
-        'profile_picture',
-        'valid_id_picture',
+        'coop_profile_picture',
+        'coop_valid_id_picture',
+        'merchant_profile_pictures',
+        'merchant_valid_id_pictures',
         // Add more input IDS as needed
     ];
 

@@ -18,7 +18,7 @@ $current_route=request()->route()->getName();
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="{{ route('profile.show') }}" class="d-block">{{ Auth::user()->name }}</a>
+                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
 
@@ -35,8 +35,8 @@ $current_route=request()->route()->getName();
                     </a>
                 </li>
 
-                <li class="nav-item {{ in_array($current_route, ['pages.vendor', 'pages.buyer', 'pages.merchant', 'pages.create_merchant' ]) ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ in_array($current_route, ['pages.vendor', 'pages.buyer', 'pages.merchant', 'pages.create_merchant']) ? 'active' : '' }}">
+                <li class="nav-item {{ in_array($current_route, ['pages.coop', 'pages.buyer', 'pages.merchant', 'pages.create_merchant' ]) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ in_array($current_route, ['pages.coop', 'pages.buyer', 'pages.merchant', 'pages.create_merchant']) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users nav-icon"></i>
                         <p>
                             {{ __('Users Management') }}
@@ -45,9 +45,9 @@ $current_route=request()->route()->getName();
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('pages.vendor') }}" class="nav-link {{ $current_route=='pages.vendor'?'active':'' }}">
+                            <a href="{{ route('pages.coop') }}" class="nav-link {{ $current_route=='pages.coop'?'active':'' }}">
                                 <i class="nav-icon fas fa-store"></i>
-                                <p>Vendor</p>
+                                <p>Coop</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -63,14 +63,6 @@ $current_route=request()->route()->getName();
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('about') }}" class="nav-link">
-                        <i class="nav-icon far fa-address-card"></i>
-                        <p>
-                            {{ __('About us') }}
-                        </p>
-                    </a>
                 </li>
             </ul>
         </nav>

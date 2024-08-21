@@ -20,8 +20,9 @@ body{
 .color-success{color: #28a745;}
 .color-warning{color: #ffc107;}
 
-.vendor-color{background-color: #549ca4;}
+.coop-color{background-color: #549ca4;}
 .merchant-color{background-color: #E68268;}
 .buyer-color{background-color: #6C9470;}
 
 .wrapper {display: flex; flex-direction: column;}
+

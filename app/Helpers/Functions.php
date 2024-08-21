@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Helpers;
+use Illuminate\Support\Carbon;
 // app/Helpers/helpers.php
 
 class Functions
@@ -48,8 +49,8 @@ class Functions
     public static function userrole_color($status)
     {
         switch ($status) {
-            case 'Vendor':
-                return 'vendor-color';
+            case 'Coop':
+                return 'coop-color';
             case 'Merchant':
                 return 'merchant-color';
             case 'Buyer':
@@ -64,4 +65,40 @@ class Functions
             echo('asdasd');
         }
     }*/
+
+    //start // Create_at interval
+    public static function interval_status($interval) {
+        if ($interval < 60) {
+            return "Just now";
+        } elseif ($interval < 1440) {
+            return "Less than a day ago";
+        } elseif ($interval < 2880) {
+            return "1 day ago";
+        } elseif ($interval < 4320) {
+            return "2 days ago";
+        } elseif ($interval < 5760) {
+            return "3 days ago";
+        } elseif ($interval < 7200) {
+            return "4 days ago";
+        } elseif ($interval < 8640) {
+            return "5 days ago";
+        } elseif ($interval < 10080) {
+            return "6 days ago";
+        } else {
+            return "More than a week ago";
+        }
+    }
+
+    public static function GetDateInterval($date) {
+        $created_at = Carbon::parse($date);
+        $date_now = Carbon::now();
+
+        $interval = $created_at->diffInMinutes($date_now);
+
+        $status = self::interval_status($interval);
+
+        return $status;
+    }
+
+     // end // Create_at interval
 }
