@@ -11,9 +11,9 @@
         <p class="login-box-msg">{{ __('Login') }}</p>
         <form action="{{ route('postLogin') }}" method="post">
             @csrf
-test me!!!!!!!!
+            test form
             <div class="input-group mb-3">
-                <input type="hidden" name="user_type" value="merchant" />
+                <input type="hidden" name="user_type" value="admin" />
                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('Email') }}" required autofocus>
                 <div class="input-group-append">
                     <div class="input-group-text">

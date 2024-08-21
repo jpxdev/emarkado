@@ -8,12 +8,16 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+
+    protected $redirectTo = '/user-login';
+    
     public function getLogin(){
+        \Log::info('getLogin(): Initiated');
         return view('auth.login'); //url path in folder resources/views/admin/auth/login.blade.php
     }
 
     public function postLogin(Request $request){
-        $guard = $request->input('user_type'); // 'vendor', 'merchant', or 'buyer'
+        $guard = $request->input('user_type'); // 'coop', 'merchant', or 'buyer'
         $credentials = $request->only('email', 'password');
     
         \Log::info('User type received:', ['user_type' => $guard]);
@@ -29,31 +33,37 @@ class LoginController extends Controller
             if ($user && $user->status == 'Approved') {
                 if (Auth::guard($guard)->attempt($credentials)) {
                     \Log::info('Authentication successful.');
-                    return redirect()->intended($guard.'-dashboard');
+                    return redirect()->route($guard.'-dashboard'); //redirect()->intended($guard.'/dashboard');
                 } else {
                     \Log::warning('Authentication failed.');
-                    return back()->withErrors(['Invalid credentials.']);
+                    // return back()->withErrors(['Invalid credentials.']);
+                    return redirect()->route('getLogin')->with('error', 'Invalid credentials.');
                 }
             } else {
                 \Log::warning('User not approved or does not exist.');
-                return back()->withErrors(['Your account is not approved or does not exist.']);
+                // return back()->withErrors(['Your account is not approved or does not exist.']);
+                return redirect()->back()->with('error','Your account is not approved or does not exist.');
             }
         } catch (\Exception $e) {
             \Log::error('Exception caught:', ['message' => $e->getMessage()]);
-            return back()->withErrors(['Invalid user type.']);
+            return redirect()->back()->with('error','Invalid User Type');
         }
     }
 
-    public function adminLogout(){
-        auth()->logout();
+    public function Logout($guard = null){
+        Auth::guard($guard)->logout();
+        session()->flush(); // Clear all session data
+        \Log::warning('Logout.');
         return redirect()->route('getLogin')->with('success', 'You have been successfully logged out.');
     }
 
     protected function getUserModel($guard)
         {
             switch ($guard) {
-                case 'vendor':
-                    return \App\Models\Vendor::class;
+                case 'admin':
+                    return \App\Models\Admin::class;
+                case 'coop':
+                    return \App\Models\Coop::class;
                 case 'merchant':
                     return \App\Models\Merchant::class; 
                 case 'buyer':

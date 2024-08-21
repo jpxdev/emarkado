@@ -7,7 +7,7 @@ $(document).ready(function() {
     // SETS THE COLOR OF USER DEPENDING ON ITS ROLE (OLD FUNCTION)
     /* function updateBadgeRole(status) {
         var statusClasses = {
-            'vendor': 'badge-success',
+            'coop': 'badge-success',
             'merchant': 'badge-warning',
             'buyer': 'badge-info'
         };

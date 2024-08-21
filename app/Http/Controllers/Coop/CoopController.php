@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin_Data\VendorModel;
+use App\Models\Admin_Data\CoopModel;
 use Illuminate\Http\Request;
 use App\Helpers\Functions;
 
-class VendorController extends Controller
+class CoopController extends Controller
 {
 
-    public function add_vendor(Request $request)
+    public function add_coop(Request $request)
     {
         $validatedData = $request->validate([
             'user_id' => 'nullable',
@@ -21,7 +21,7 @@ class VendorController extends Controller
             'email' => 'required|email|max:255',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:512',
             'valid_id_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:512',
-            'username' => 'required|string|max:255|unique:vendors',
+            'username' => 'required|string|max:255|unique:coop',
             'password' => [
                 'required',
                 'string',
@@ -43,15 +43,15 @@ class VendorController extends Controller
             'date' => 'nullable|date'
         ]);
 
-        // $latestVendor = VendorModel::orderBy('id', 'desc')->first();
-        // $nextId = $latestVendor ? $latestVendor->id + 1 : 1;
+        // $latestCoop = CoopModel::orderBy('id', 'desc')->first();
+        // $nextId = $latestCoop ? $latestCoop->id + 1 : 1;
         // $formattedId = 'VNDR-' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
 
 
 
         $data = $validatedData;
-        $data['user_id'] = Functions::IDGenerator(new VendorModel, 'user_id', 5, 'VNDR');
-        $data['user_role'] = $data['user_role'] ?? 'Vendor';
+        $data['user_id'] = Functions::IDGenerator(new CoopModel, 'user_id', 5, 'VNDR');
+        $data['user_role'] = $data['user_role'] ?? 'Coop';
         $data['date'] = $data['date'] ?? date('Y-m-d');
         $data['status'] = $data['status'] ?? 'For approval';
         $data['profile_picture'] = $request->hasFile('profile_picture') ? $request->file('profile_picture')->store('profile_pictures', 'public') : null;
@@ -61,13 +61,13 @@ class VendorController extends Controller
         //dd($data);
 
         try {
-            VendorModel::create($data);
+            CoopModel::create($data);
 
             $success = ['status' => 'success', 'user_id' => $data['user_id']];
-            return redirect()->route('pages.vendor', $success);
+            return redirect()->route('pages.coop', $success);
         } catch (\Exception $e) {
             $error = ['status' => 'error', 'user_id' => $data['user_id']];
-            return redirect()->route('create.vendor', $error);
+            return redirect()->route('create.coop', $error);
         }
     }
 }

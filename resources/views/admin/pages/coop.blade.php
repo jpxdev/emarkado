@@ -26,12 +26,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ __('VENDOR') }}</h1>
+                    <h1>{{ __('COOP') }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Vendor</li>
+                        <li class="breadcrumb-item active">Coop</li>
                     </ol>
                 </div>
             </div>
@@ -52,8 +52,8 @@
                             </div>
 
                             <div class="d-flex flex-column">
-                                <h3 class="card-title">Vendor Users</h3>
-                                <a href="{{ route('pages.create_vendor') }}" class="pt-2">
+                                <h3 class="card-title">Coop Users</h3>
+                                <a href="{{ route('pages.create_coop') }}" class="pt-2">
                                     <button class="btn btn-primary">Registration</button>
                                 </a>
                             </div>
@@ -64,25 +64,30 @@
                                     <thead>
                                         <tr>
                                             <th>User ID</th>
-                                            <th>Name</th>
+                                            <th>Authorized Representative</th>
                                             <th>Email</th>
                                             <th>User Role</th>
                                             <th>Status</th>
+                                            <th>Created at</th>
                                             <th>Update Record</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($vendors as $vendor)
+                                        @foreach ($coop as $coop)
                                             <tr>
-                                                <td>{{ $vendor->user_id }}</td>
-                                                <td>{{ $vendor->name }}</td>
-                                                <td>{{ $vendor->email }}</td>
-                                                <td><span id="status-badgeRole"
-                                                        class="badge badge-pill fontcolor-white {{ Functions::userrole_color($vendor->user_role) }}">{{ $vendor->user_role }}</span>
+                                                <td  class="align-middle">{{ $coop->user_id }}</td>
+                                                <td class="align-middle">
+                                                    <img src="{{ $coop->profile_picture ? URL::to('/storage') . '/' . $coop->profile_picture : asset('images/icons8-user.png') }}" alt="Profile" class="table-avatar" onerror="this.onerror=null;this.src='{{ asset('images/icons8-user.png') }}">
+                                                    {{ $coop->coop_representative_personel }}
                                                 </td>
-                                                <td><span id="status-badgeStatus"
-                                                        class="badge badge-pill {{ Functions::status_color($vendor->status) }}">{{ $vendor->status }}</span>
+                                                <td class="align-middle">{{ $coop->email }}</td>
+                                                <td class="align-middle"><span id="status-badgeRole"
+                                                        class="badge badge-pill fontcolor-white {{ Functions::userrole_color($coop->user_role) }}">{{ $coop->user_role }}</span>
                                                 </td>
+                                                <td class="align-middle"><span id="status-badgeStatus"
+                                                        class="badge badge-pill {{ Functions::status_color($coop->status) }}">{{ $coop->status }}</span>
+                                                </td>
+                                                <td class="align-middle">{{ Functions::GetDateInterval($coop->created_at)  === "More than a week ago" ? $coop->created_at :  Functions::GetDateInterval($coop->created_at)}}</td>
                                                 <td class="align-middle"><a href="#" class="btn btn-tool"><i
                                                             class="fas fa-pen"></i></a><a href="#"
                                                         class="btn btn-tool"><i

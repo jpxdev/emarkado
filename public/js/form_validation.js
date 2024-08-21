@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+
     $('#agency_affiliation').change(function() {
         if ($(this).val() === 'yes') {
           $('#agency_affiliation_details').removeClass('d-none').addClass('d-block');
@@ -20,13 +21,14 @@ $(document).ready(function(){
       return this.optional(element) || regex.test(value);
     }, 'Invalid password pattern.');
 
-    $('#vendorForm').validate({
+    // client-side validation for coop
+    $('#coopForm').validate({
         rules: {
-            'name' : {
+            'authorized_representative' : {
                 required: true,
                 minlength: 3
             },
-            'business_name': {
+            'coop_name': {
                 required: true,
                 minlength:2
             },
@@ -80,5 +82,55 @@ $(document).ready(function(){
         }
     });
 
-    console.log('got thru');
+    //console.log('got thru');
+
+
+    // client-side validation for merchant
+    $('#merchant_form').validate({
+        rules: {
+            'name' : {
+                required: true,
+                minlength: 3
+            },
+            'address': {
+                required: true,
+                minlength: 3
+            },
+            'contact_number': {
+                required: true,
+                validNumber: true
+            },
+            'email': {
+                required: true,
+                email: true
+            },
+            'username': {
+                required: true,
+                minlength: 3
+            },
+            'password': {
+                required: true,
+                minlength: 8,
+                password_regex: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$'
+            },
+            'password_confirmation': {
+                required: true,
+                equalTo: '#password'
+            },
+        },
+        errorPlacement: function(error, element) {
+            error.appendTo(element.closest('.form-group').find('.error-container'));
+        },
+        highlight: function(element) {
+            $(element).removeClass('is-valid').addClass('is-invalid');
+        },
+        unhighlight: function(element) {
+            $(element).removeClass('is-invalid').addClass('is-valid');
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+
 });

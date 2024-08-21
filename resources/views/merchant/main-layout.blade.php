@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Panel {{ isset($title) ? '| ' . $title : '' }}</title>
+    <title>Merchant Panel {{ isset($title) ? '| ' . $title : '' }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -16,7 +16,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/default.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
     <!-- optimized file, please refer the readable css on template file -->
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
@@ -64,7 +63,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('admin.layout.left-sidebar')
+        @include('merchant.layout.left-sidebar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">

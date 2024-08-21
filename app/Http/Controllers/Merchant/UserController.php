@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function add_merchant(Request $request)
     {
-        \Log::info('add_merchant method called');
+        // \Log::info('add_merchant method called');
         //return $request->input(); //checking of all input fields, no storing of records executed here
 
         $student_id = Functions::IDGenerator(new MerchantModel, 'user_id', 5, 'MRCHNT');
@@ -58,8 +58,8 @@ class UserController extends Controller
 
         $data['user_id'] = $student_id;
         $data['address'] = $data['address'] ?? '';
-        $data['merchant_profile_pictures'] = $data['merchant_profile_pictures'] ?? '';
-        $data['merchant_valid_id_pictures'] = $data['merchant_valid_id_pictures'] ?? '';
+        $data['profile_picture'] = $data['profile_picture'] ?? '';
+        $data['valid_id_picture'] = $data['valid_id_picture'] ?? '';
         $data['user_role'] = $data['user_role'] ?? 'Merchant';
         $data['status'] = $data['status'] ?? 'For approval';
         $data['date'] = $data['date'] ?? date('Y-m-d');
@@ -68,8 +68,6 @@ class UserController extends Controller
         $data['password'] = bcrypt($data['password']);
 
         //$newProduct = MerchantModel::create($data);
-
-        dd($data);
         MerchantModel::create($data);
         $success = ['status' => 'success', 'user_id' => $student_id];
         return redirect()->route('pages.merchant', $success); //url path in folder resources/views/admin/pages/create_merchant.blade.php
